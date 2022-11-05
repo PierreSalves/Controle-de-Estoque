@@ -14,15 +14,20 @@ BEGIN
 	@Material_ID INT,
 	@Estoque_qtMaterial INT,
 	@Equacao_de_compra INT;
-
+	----------------------------------------------------------------------------------------
 	SELECT @Buy_qtMaterial = (SELECT qt_Item 
 								FROM tblPurchase_RawMaterials
 								WHERE id = (SELECT id FROM inserted));
+
 	SELECT @Material_ID = (SELECT purchase.id_rawmaterial_fk FROM inserted AS purchase);
+
 	SELECT @Estoque_qtMaterial = (SELECT material.qt_estoque FROM tblRawMaterial AS material
 									WHERE material.id = @Material_ID);
-	SELECT @Equacao_de_compra = @Estoque_qtMaterial + @Buy_qtMaterial;
+		IF @Estoque_qtMaterial IS NULL
+			SELECT @Estoque_qtMaterial = 0;
 
+	SELECT @Equacao_de_compra = @Estoque_qtMaterial + @Buy_qtMaterial;
+	----------------------------------------------------------------------------------------
 	UPDATE tblRawMaterial
 		SET
 			qt_estoque = @Equacao_de_compra
