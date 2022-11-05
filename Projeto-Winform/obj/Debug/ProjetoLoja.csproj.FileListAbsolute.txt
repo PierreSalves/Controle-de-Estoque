@@ -1,0 +1,16 @@
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\bin\Debug\ProjetoLoja.exe.config
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\bin\Debug\ProjetoLoja.exe
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\bin\Debug\ProjetoLoja.pdb
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\obj\Debug\ProjetoLoja.csproj.AssemblyReference.cache
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\obj\Debug\ProjetoLoja.csproj.SuggestedBindingRedirects.cache
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\obj\Debug\ProjetoLoja.frmPrincipal.resources
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\obj\Debug\ProjetoLoja.frmCadastroCliente.resources
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\obj\Debug\ProjetoLoja.frmCadastroProduto.resources
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\obj\Debug\ProjetoLoja.frmCadastroUser.resources
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\obj\Debug\ProjetoLoja.frmPedido.resources
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\obj\Debug\ProjetoLoja.Properties.Resources.resources
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\obj\Debug\ProjetoLoja.csproj.GenerateResource.cache
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\obj\Debug\ProjetoLoja.csproj.CoreCompileInputs.cache
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\obj\Debug\ProjetoLoja.exe
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\obj\Debug\ProjetoLoja.pdb
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto Loja\ProjetoLoja\obj\Debug\ProjetoLoja.frmLoginUser.resources
