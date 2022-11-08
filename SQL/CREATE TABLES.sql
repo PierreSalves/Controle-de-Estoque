@@ -78,10 +78,3 @@ CREATE TABLE tblSales_Product(
 	qt_Item INT CHECK (qt_Item > 0),
 	preco_ITEM REAL
 );
-
-INSERT INTO tblUsers VALUES(
-	'root',
-	'0990',
-	'adm_root@root.com',
-	'0000',
-	'2022-10-10');

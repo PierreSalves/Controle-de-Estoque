@@ -12,12 +12,20 @@ BEGIN
 	DECLARE
 	@Produce_qtProduct INT,
 	@Recipe_ID INT,
-	@Product_ID INT,	
+	@Product_ID INT,
 	@Estoque_qtProduct INT,
-	@Equacao_de_producao INT,
 	@Estoque_qtMaterial INT,
-	@Equacao_de_Materiais_Usados INT;
+	@Equacao_de_producao INT,
+	@Equacao_de_Materiais_Usados INT,
+	@i INT = 0,
+	@qt_Materials_inRecipe INT;
 
+	DECLARE Material_id_cursor CURSOR FOR 
+		SELECT  rawrecipe.id_rawmaterial_fk
+		FROM tblRaw_Recipe AS rawrecipe
+		INNER JOIN tblRawMaterial AS rawmaterial ON rawrecipe.id_rawmaterial_fk = rawmaterial.id
+		WHERE rawrecipe.id_recipe_fk = 6;--@Recipe_ID;
+		
 	SELECT @Recipe_ID = (SELECT produce.id_recipe_fk 
 							FROM inserted AS produce);
 
@@ -44,7 +52,6 @@ BEGIN
 		WHERE id = @Product_ID;
 
 	----------------------------------------------------------------------------MATERIALS				
-	--INCOMPLETO
 	DECLARE
 		@Material_ID INT,
 		@qt_Material INT;
