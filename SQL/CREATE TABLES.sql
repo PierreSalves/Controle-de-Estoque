@@ -74,7 +74,7 @@ CREATE TABLE tblProd_Produced(
 CREATE TABLE tblSales_Product(
 	id INT PRIMARY KEY identity(1,1) not null,
 	id_sale_fk INT FOREIGN KEY (id_sale_fk) REFERENCES tblSales(id),
-	id_prod_produced_fk INT FOREIGN KEY (id_prod_produced_fk) REFERENCES tblProd_Produced(id),
+	id_product_fk INT FOREIGN KEY (id_product_fk) REFERENCES tblProduct(id),
 	qt_Item INT CHECK (qt_Item > 0),
 	preco_ITEM REAL
 );

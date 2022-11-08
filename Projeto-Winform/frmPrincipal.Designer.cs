@@ -182,8 +182,9 @@
             this.btnSales.Name = "btnSales";
             this.btnSales.Size = new System.Drawing.Size(192, 30);
             this.btnSales.TabIndex = 58;
-            this.btnSales.Text = "SAÍDAS";
+            this.btnSales.Text = "VENDER PRODUTOS";
             this.btnSales.UseVisualStyleBackColor = false;
+            this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
             // 
             // btnBuyMaterials
             // 
@@ -218,8 +219,9 @@
             this.bntProduction.Name = "bntProduction";
             this.bntProduction.Size = new System.Drawing.Size(192, 30);
             this.bntProduction.TabIndex = 56;
-            this.bntProduction.Text = "PRODUÇÂO";
+            this.bntProduction.Text = "PRODUZIR";
             this.bntProduction.UseVisualStyleBackColor = false;
+            this.bntProduction.Click += new System.EventHandler(this.bntProduction_Click);
             // 
             // frmPrincipal
             // 

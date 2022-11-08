@@ -86,17 +86,23 @@
     <Compile Include="frmCadastroUser.Designer.cs">
       <DependentUpon>frmCadastroUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPedido.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPedido.Designer.cs">
-      <DependentUpon>frmPedido.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmLoginUser.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmLoginUser.Designer.cs">
       <DependentUpon>frmLoginUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProducao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProducao.Designer.cs">
+      <DependentUpon>frmProducao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVenderProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVenderProdutos.Designer.cs">
+      <DependentUpon>frmVenderProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\RawMaterial.cs" />
@@ -121,11 +127,14 @@
     <EmbeddedResource Include="frmCadastroUser.resx">
       <DependentUpon>frmCadastroUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPedido.resx">
-      <DependentUpon>frmPedido.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmLoginUser.resx">
       <DependentUpon>frmLoginUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProducao.resx">
+      <DependentUpon>frmProducao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVenderProdutos.resx">
+      <DependentUpon>frmVenderProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

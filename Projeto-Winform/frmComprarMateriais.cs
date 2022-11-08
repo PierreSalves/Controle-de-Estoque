@@ -500,8 +500,6 @@ namespace ProjetoWinform
         }
         private void imgButton_Save_Click(object sender, EventArgs e)
         {
-            Recipe newRecipe = new Recipe();
-            RawMaterial rawMaterial;
             if (INSERT)
             {
                 if (edtDesc.Text != ""  && mskedtBuyDate.Text != "")

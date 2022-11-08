@@ -45,5 +45,17 @@ namespace ProjetoWinform
             frmComprarMateriais compra = new frmComprarMateriais();
             compra.Show();
         }
+
+        private void btnSales_Click(object sender, EventArgs e)
+        {
+            frmVenderProdutos venda = new frmVenderProdutos();
+            venda.Show();
+        }
+
+        private void bntProduction_Click(object sender, EventArgs e)
+        {
+            frmProducao producao = new frmProducao();
+            producao.Show();
+        }
     }
 }
