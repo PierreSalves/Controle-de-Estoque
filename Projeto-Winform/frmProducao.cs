@@ -21,8 +21,8 @@ namespace ProjetoWinform
         SqlDataAdapter adapt_cmboxRecipes;
 
         DataTable Virtual_listMaterials = new DataTable();
-        int[] id_Recipes, id_SaleProduct;
-        int id, rowIndex;
+        int[] id_Recipes;
+        int id;
 
         bool INSERT; //INSERT == true
         bool UPDATE; //UPDATE == true
@@ -30,27 +30,23 @@ namespace ProjetoWinform
         public frmProducao()
         {
             InitializeComponent();
-            edtDesc.Focus();
             sqlcon.Open();
             DataTable produce = new DataTable();
-            adapt_GridProduce = new SqlDataAdapter(@"SELECT id AS ID, 
-                                                            id_recipe_fk, 
-                                                            produceDay AS Data,
-                                                            situacao AS STATUS
-                                                        FROM tblProd_Produced", sqlcon);
+            adapt_GridProduce = new SqlDataAdapter(@"SELECT produce.id AS ID, 
+                                                            recipe.descricao AS Receita, 
+                                                            produce.produceDay AS Data
+                                                     FROM tblProd_Produced AS produce
+                                                     INNER JOIN tblRecipe AS recipe ON produce.id_recipe_fk = recipe.id", sqlcon);
             adapt_GridProduce.Fill(produce);
             dGridView_Produce.DataSource = produce;
             sqlcon.Close();
         }
         private void frmProducao_Load(object sender, EventArgs e)
         {
-            edtDesc.Enabled = false;
-            mskedtSellDate.Enabled = false;
-            cmbRecipes.Enabled = false;
-            edtQtProduce.Enabled = false;
+            mskedtProduceDay.Enabled = false;
             pnlCentro.Enabled = false;
             dGridView_Produce.Enabled = true;
-            dGridView_Materials.Enabled = true;
+            dGridView_Materials.Enabled = false;
 
             imgButton_Add.Enabled = true;
             imgButton_Update.Enabled = true;
@@ -60,24 +56,19 @@ namespace ProjetoWinform
             imgButton_Cancel.Enabled = false;
 
             ExibirDados();
-            id = (int)dGridView_Produce.Rows[0].Cells[0].Value;
-            FiltrarDados("material");
-            FiltrarDados("GridMaterial");
-            edtID.Text = dGridView_Produce.Rows[0].Cells[0].Value.ToString();
-            edtDesc.Text = dGridView_Produce.Rows[0].Cells[1].Value.ToString();
-            mskedtSellDate.Text = dGridView_Produce.Rows[0].Cells[2].Value.ToString();
+            FiltrarDados("Product");
+            FiltrarDados("GridProduct");
         }
-        private void dGridView_Vendas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dGridView_Produce_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 ExibirDados();
                 id = (int)dGridView_Produce.Rows[e.RowIndex].Cells[0].Value;
-                FiltrarDados("material");
-                FiltrarDados("GridMaterial");
+                FiltrarDados("Product");
+                FiltrarDados("GridProduct");
                 edtID.Text = dGridView_Produce.Rows[e.RowIndex].Cells[0].Value.ToString();
-                edtDesc.Text = dGridView_Produce.Rows[e.RowIndex].Cells[1].Value.ToString();
-                mskedtSellDate.Text = dGridView_Produce.Rows[e.RowIndex].Cells[2].Value.ToString();
+                mskedtProduceDay.Text = dGridView_Produce.Rows[e.RowIndex].Cells[2].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -87,22 +78,13 @@ namespace ProjetoWinform
             {
                 if (dGridView_Materials.Rows.Count == 0)
                 {
-                    FormatListProducts();
+                    FormatListMaterials();
                 }
             }
         }
-        private void dGridView_Products_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void cmbRecipes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                rowIndex = e.RowIndex;
-                cmbRecipes.SelectedIndex = (int)dGridView_Materials.Rows[e.RowIndex].Index;
-                edtQtProduce.Text = dGridView_Materials.Rows[e.RowIndex].Cells[2].Value.ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro: " + ex.ToString());
-            }
+            FiltrarDados("Recipe");
         }
         private void ExibirDados()
         {
@@ -110,17 +92,18 @@ namespace ProjetoWinform
             {
                 sqlcon.Open();
                 DataTable sales = new DataTable();
-                adapt_GridProduce = new SqlDataAdapter(@"SELECT id AS ID, 
-                                                            id_recipe_fk, 
-                                                            produceDay AS Data,
-                                                            situacao AS STATUS
-                                                        FROM tblProd_Produced", sqlcon);
+                adapt_GridProduce = new SqlDataAdapter(@"SELECT produce.id AS ID, 
+                                                            recipe.descricao AS Receita, 
+                                                            produce.produceDay AS Data
+                                                        FROM tblProd_Produced AS produce
+                                                        INNER JOIN tblRecipe AS recipe ON produce.id_recipe_fk = recipe.id", sqlcon);
                 adapt_GridProduce.Fill(sales);
                 dGridView_Produce.DataSource = sales;
                 //////////////////////////////////////////////////////////////////////////////////////
                 DataTable recipe = new DataTable();
                 adapt_cmboxRecipes = new SqlDataAdapter("SELECT id,descricao FROM tblRecipe", sqlcon);
                 adapt_cmboxRecipes.Fill(recipe);
+                id = (int)recipe.Rows[0][0];
                 id_Recipes = new int[recipe.Rows.Count];    //array que armazena id de Receitas
 
                 //loop que preencre o array de id e o ComboBox de Receitas
@@ -143,46 +126,62 @@ namespace ProjetoWinform
         }
         private void FiltrarDados(string dado)
         {
+            if (dado == "Recipe")
+            {
+                string filter_recipe = $@"DECLARE @id_recipe INT;
+                                          SELECT @id_recipe = {id_Recipes[cmbRecipes.SelectedIndex]}
+                                          SELECT product.descricao,
+                                                 recipe.qt_produce
+                                          FROM tblRecipe AS recipe
+                                          INNER JOIN tblProduct AS product ON recipe.id_product_fk = product.id
+                                          WHERE recipe.id = @id_recipe";
+
+                DataTable fillRecipe = new DataTable();
+                adapt_cmboxRecipes = new SqlDataAdapter(filter_recipe, sqlcon);
+                adapt_cmboxRecipes.Fill(fillRecipe);
+                edtProduct.Text = fillRecipe.Rows[0][0].ToString();
+                edtQtProduce.Text = fillRecipe.Rows[0][1].ToString();
+            }
             if (dado == "Product")
             {
-                string filter_products = ($@"  DECLARE @id INT;
+                string filter_product_inrecipe = ($@"DECLARE @id INT;
                                                     SELECT @id = {id};
-                                                    SELECT saleProduct.id_product_fk AS IDproduto, 
-                                                            product.descricao AS Produto, 
-                                                            saleProduct.qt_Item AS Quantidade,
-                                                            saleProduct.preco_ITEM AS Preco,
-                                                            saleProduct.id
-                                                    FROM tblSales_Product AS saleProduct   
-                                                    LEFT JOIN tblProduct AS product ON saleProduct.id_product_fk = product.id
-                                                    INNER JOIN tblSales AS sale ON saleProduct.id_sale_fk = sale.id
-                                                    WHERE saleProduct.id_sale_fk = @id;");
+                                                    SELECT produce.id_recipe_fk AS IDreceita, 
+                                                            recipe.descricao AS Receita, 
+                                                            product.descricao AS Produto,
+                                                            recipe.qt_produce
+                                                    FROM tblProd_Produced AS produce  
+                                                    INNER JOIN tblRecipe AS recipe ON produce.id_recipe_fk = recipe.id
+                                                    INNER JOIN tblProduct AS product ON product.id = recipe.id_product_fk
+                                                    WHERE produce.id = @id;");
 
-                DataTable product = new DataTable();
-                adapt_cmboxRecipes = new SqlDataAdapter(filter_products, sqlcon);
-                adapt_cmboxRecipes.Fill(product);
-                id_Recipes = new int[product.Rows.Count];
-                id_SaleProduct = new int[product.Rows.Count];
+                DataTable product_inrecipe = new DataTable();
+                adapt_cmboxRecipes = new SqlDataAdapter(filter_product_inrecipe, sqlcon);
+                adapt_cmboxRecipes.Fill(product_inrecipe);
+                id_Recipes = new int[product_inrecipe.Rows.Count];
                 cmbRecipes.Items.Clear();
-                //loop que preenche o ComboBox de Materiais
-                for (int i = 0; i < product.Rows.Count; i++)
+                //loop que preenche o ComboBox de Receitas
+                for (int i = 0; i < product_inrecipe.Rows.Count; i++)
                 {
-                    id_Recipes[i] = (int)product.Rows[i][0];
-                    cmbRecipes.Items.Add(product.Rows[i][1]);
-                    id_SaleProduct[i] = (int)product.Rows[i][4];
+                    id_Recipes[i] = (int)product_inrecipe.Rows[i][0];
+                    cmbRecipes.Items.Add(product_inrecipe.Rows[i][1]);
                 }
+                cmbRecipes.SelectedIndex = 0;
+                edtProduct.Text = product_inrecipe.Rows[0][2].ToString();
+                edtQtProduce.Text = product_inrecipe.Rows[0][3].ToString();
             }
             if (dado == "GridProduct")
             {
                 string filter_products = ($@"  DECLARE @id INT;
                                                     SELECT @id = {id};
-                                                    SELECT saleProduct.id_product_fk AS IDproduto, 
-                                                            product.descricao AS Produto, 
-                                                            saleProduct.qt_Item AS Quantidade,
-                                                            saleProduct.preco_ITEM AS Preco,
-                                                    FROM tblSales_Product AS saleProduct   
-                                                    LEFT JOIN tblProduct AS product ON saleProduct.id_product_fk = product.id
-                                                    INNER JOIN tblSales AS sale ON saleProduct.id_sale_fk = sale.id
-                                                    WHERE saleProduct.id_sale_fk = @id;");
+                                                    SELECT rawrecipe.id_rawmaterial_fk AS IDmaterial, 
+		                                                    material.descricao AS Material, 
+		                                                    rawrecipe.qt_Item AS Quantidade
+                                                    FROM tblRaw_Recipe AS rawrecipe
+                                                    INNER JOIN tblRawMaterial AS material ON rawrecipe.id_rawmaterial_fk = material.id
+                                                    INNER JOIN tblRecipe AS recipe ON rawrecipe.id_recipe_fk = recipe.id
+                                                    INNER JOIN tblProd_produced AS produce ON produce.id_recipe_fk = recipe.id
+                                                    WHERE produce.id = @id;");
 
                 DataTable list_gridProducts = new DataTable();
                 adapt_GridMaterials = new SqlDataAdapter(filter_products, sqlcon);
@@ -193,19 +192,16 @@ namespace ProjetoWinform
         private void LimparDados()
         {
             edtID.Text = "";
-            edtDesc.Text = "";
-            mskedtSellDate.Text = "";
-            edtDesc.Focus();
+            mskedtProduceDay.Text = "";
         }
-        private void FormatListProducts()
+        private void FormatListMaterials()
         {
             Virtual_listMaterials.Columns.Clear();
             Virtual_listMaterials.Rows.Clear();
 
-            Virtual_listMaterials.Columns.Add("IDproduto");
-            Virtual_listMaterials.Columns.Add("Produto");
+            Virtual_listMaterials.Columns.Add("IDMaterial");
+            Virtual_listMaterials.Columns.Add("Material");
             Virtual_listMaterials.Columns.Add("Quantidade");
-            Virtual_listMaterials.Columns.Add("Preco");
             dGridView_Materials.DataSource = Virtual_listMaterials;
         }
         private void imgButton_Add_Click(object sender, EventArgs e)
@@ -215,14 +211,13 @@ namespace ProjetoWinform
             DELETE = false;
 
             LimparDados();
-            FormatListProducts();
+            FormatListMaterials();
             ExibirDados();
 
-            edtDesc.Enabled = true;
-            mskedtSellDate.Enabled = true;
+            mskedtProduceDay.Enabled = true; mskedtProduceDay.Text = DateTime.Today.ToShortDateString();
             pnlCentro.Enabled = true;
             dGridView_Produce.Enabled = false;
-            dGridView_Materials.Enabled = true;
+            dGridView_Materials.Enabled = false;
 
             imgButton_Add.Enabled = false; imgButton_Add.Image = imgButton_Add.ErrorImage;
             imgButton_Update.Enabled = false; imgButton_Update.Image = imgButton_Update.InitialImage;
@@ -239,8 +234,7 @@ namespace ProjetoWinform
 
             ExibirDados();
 
-            edtDesc.Enabled = true;
-            mskedtSellDate.Enabled = true;
+            mskedtProduceDay.Enabled = true;
             pnlCentro.Enabled = true;
             dGridView_Produce.Enabled = false;
             dGridView_Materials.Enabled = false;
@@ -260,8 +254,8 @@ namespace ProjetoWinform
                 UPDATE = false;
                 DELETE = true;  //DELETE = true
 
-                edtDesc.Enabled = false;
-                mskedtSellDate.Enabled = false;
+                mskedtProduceDay.Enabled = false;
+                pnlCentro.Enabled = false;
                 dGridView_Produce.Enabled = false;
                 dGridView_Materials.Enabled = false;
 
@@ -276,115 +270,72 @@ namespace ProjetoWinform
         private void imgButton_Refresh_Click(object sender, EventArgs e)
         {
             LimparDados();
-            FormatListProducts();
+            FormatListMaterials();
             ExibirDados();
         }
         private void imgButton_Save_Click(object sender, EventArgs e)
         {
             if (INSERT)
             {
-                if (edtDesc.Text != "" && mskedtSellDate.Text != "")
+                string insertPurchase = $@" DECLARE @id TABLE(id INT);
+                                            INSERT INTO[dbo].[tblProd_Produced]
+                                                    ([id_recipe_fk],
+                                                    [produceDay])
+                                            OUTPUT INSERTED.ID INTO @id
+                                            VALUES 
+                                                    (@id_recipe_fk,
+                                                    @produceDay);";
+
+                //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                try
                 {
-                    string insertPurchase = @"INSERT INTO[dbo].[tblPurchase]
-                                                      ([descricao],
-                                                      [buyDate])
-                                             OUTPUT INSERTED.ID
-                                             VALUES 
-                                                      (@descricao,
-                                                      @buyDate);";
+                    cmnd = new SqlCommand(insertPurchase, sqlcon);
+                    cmnd.CommandType = CommandType.Text;
+                    //adicionar parametros do SqlCommand cmnd
+                    cmnd.Parameters.Add("@id_recipe_fk", SqlDbType.VarChar).Value = id_Recipes[cmbRecipes.SelectedIndex];
+                    cmnd.Parameters.Add("@produceDay", SqlDbType.Date).Value = DateTime.Today;
 
-                    string insertMaterials_inPurchase = @"INSERT INTO[dbo].[tblPurchase_RawMaterials]
-                                                                    ([id_purchase_fk],
-                                                                    [id_rawmaterial_fk],
-                                                                    [qt_Item],
-                                                                    [preco_ITEM])
-                                                         VALUES
-                                                                    (@id_purchase_fk,
-                                                                    @id_rawmaterial_fk,
-                                                                    @qt_Item,
-                                                                    @preco_ITEM);";
-
-                    //////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                    try
-                    {
-                        cmnd = new SqlCommand(insertPurchase, sqlcon);
-                        cmnd.CommandType = CommandType.Text;
-                        //adicionar parametros do SqlCommand cmnd
-                        cmnd.Parameters.Add("@descricao", SqlDbType.VarChar).Value = edtDesc.Text;
-                        cmnd.Parameters.Add("@buyDate", SqlDbType.Date).Value = DateTime.Today;
-
-                        sqlcon.Open();
-                        int lastId = (int)cmnd.ExecuteScalar();
-                        //cmnd.ExecuteNonQuery();
-                        cmnd.Parameters.Clear();
-                        sqlcon.Close();
-
-                        ///////////////////////////////////////////////////////////////////////////////////////////////////
-
-                        cmnd = new SqlCommand(insertMaterials_inPurchase, sqlcon);
-                        cmnd.CommandType = CommandType.Text;
-                        ExibirDados();
-
-                        for (int i = 0; i < Virtual_listMaterials.Rows.Count; i++)      //MULTIPLOS INSERTS NA tblRaw_Recipe
-                        {
-
-                            cmnd.Parameters.Add("@id_purchase_fk", SqlDbType.Int).Value = lastId;
-                            cmnd.Parameters.Add("@id_rawmaterial_fk", SqlDbType.Int).Value = Virtual_listMaterials.Rows[i][0];
-                            cmnd.Parameters.Add("@qt_Item", SqlDbType.Int).Value = Virtual_listMaterials.Rows[i][2];
-                            cmnd.Parameters.Add("@preco_ITEM", SqlDbType.Real).Value = Virtual_listMaterials.Rows[i][3];
-                            sqlcon.Open();
-                            cmnd.ExecuteNonQuery();
-                            cmnd.Parameters.Clear();
-                            sqlcon.Close();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Erro : " + ex.Message);
-                    }
-                    finally
-                    {
-                        LimparDados();
-                        FormatListProducts();
-                        ExibirDados();
-
-                        edtDesc.Enabled = false;
-                        mskedtSellDate.Enabled = false;
-                        pnlCentro.Enabled = false;
-                        dGridView_Produce.Enabled = true;
-                        dGridView_Materials.Enabled = true;
-
-                        imgButton_Add.Enabled = true; imgButton_Add.Image = imgButton_Add.ErrorImage;
-                        imgButton_Update.Enabled = true; imgButton_Update.Image = imgButton_Update.ErrorImage;
-                        imgButton_Delete.Enabled = false; imgButton_Delete.Image = imgButton_Delete.InitialImage;
-                        imgButton_Refresh.Enabled = false; imgButton_Refresh.Image = imgButton_Refresh.InitialImage;
-                        imgButton_Save.Enabled = false; imgButton_Save.Image = imgButton_Save.InitialImage;
-                        imgButton_Cancel.Enabled = false; imgButton_Cancel.Image = imgButton_Cancel.InitialImage;
-
-                        INSERT = false;
-                        UPDATE = false;
-                        DELETE = false;
-                    }
+                    sqlcon.Open();
+                    cmnd.ExecuteNonQuery();
+                    cmnd.Parameters.Clear();
+                    sqlcon.Close();
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro : " + ex.Message);
+                }
+                finally
+                {
+                    LimparDados();
+                    FormatListMaterials();
+                    ExibirDados();
+
+                    mskedtProduceDay.Enabled = false;
+                    pnlCentro.Enabled = false;
+                    dGridView_Produce.Enabled = true;
+                    dGridView_Materials.Enabled = false;
+
+                    imgButton_Add.Enabled = true; imgButton_Add.Image = imgButton_Add.ErrorImage;
+                    imgButton_Update.Enabled = true; imgButton_Update.Image = imgButton_Update.ErrorImage;
+                    imgButton_Delete.Enabled = false; imgButton_Delete.Image = imgButton_Delete.InitialImage;
+                    imgButton_Refresh.Enabled = false; imgButton_Refresh.Image = imgButton_Refresh.InitialImage;
+                    imgButton_Save.Enabled = false; imgButton_Save.Image = imgButton_Save.InitialImage;
+                    imgButton_Cancel.Enabled = false; imgButton_Cancel.Image = imgButton_Cancel.InitialImage;
+
+                    INSERT = false;
+                    UPDATE = false;
+                    DELETE = false;
+                }
+                
             }
             if (UPDATE)
             {
-                if (edtDesc.Text != "" && mskedtSellDate.Text != "")
-                {
-                    string updatePurchase = @"UPDATE [dbo].[tblPurchase]
+                    string updatePurchase = @"UPDATE [dbo].[tblProd_Produced]
                                             SET
-                                                      [descricao] = @descricao,
-                                                      [buyDate] = @buyDate
+                                                      [id_recipe_fk] = @id_recipe_fk,
+                                                      [produceDay] = @produceDay
                                             WHERE [id] = @id";
-
-                    string updateMaterials_inRecipe = @"UPDATE [dbo].[tblPurchase_RawMaterials]
-                                                        SET
-                                                                [id_purchase_fk] = @id_purchase_fk,
-                                                                [id_rawmaterial_fk] = @id_rawmaterial_fk,
-                                                                [qt_Item] = @qt_Item,
-                                                                [preco_ITEM] = @preco_ITEM
-                                                        WHERE [id] = @id";
 
                     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -395,34 +346,14 @@ namespace ProjetoWinform
                             cmnd = new SqlCommand(updatePurchase, sqlcon);
                             cmnd.CommandType = CommandType.Text;
                             //adicionar parametros do comando
+                            cmnd.Parameters.Add("@id_recipe_fk", SqlDbType.Int).Value = id_Recipes[cmbRecipes.SelectedIndex];
+                            cmnd.Parameters.Add("@produceDay", SqlDbType.VarChar).Value = mskedtProduceDay.Text;
                             cmnd.Parameters.Add("@id", SqlDbType.Int).Value = id;
-                            cmnd.Parameters.Add("@descricao", SqlDbType.VarChar).Value = edtDesc.Text;
-                            cmnd.Parameters.Add("@buyDate", SqlDbType.VarChar).Value = mskedtSellDate.Text;
 
                             sqlcon.Open();
                             cmnd.ExecuteNonQuery();
                             cmnd.Parameters.Clear();
                             sqlcon.Close();
-
-                            ////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                            cmnd = new SqlCommand(updateMaterials_inRecipe, sqlcon);
-                            cmnd.CommandType = CommandType.Text;
-                            cmnd.Parameters.Clear();
-
-                            for (int i = 0; i < id_SaleProduct.Length; i++)      //MULTIPLOS UPDATES NA tblRaw_Recipe
-                            {
-                                cmnd.Parameters.Add("@id", SqlDbType.Int).Value = id_SaleProduct[i];
-                                cmnd.Parameters.Add("@id_purchase_fk", SqlDbType.Int).Value = id;
-                                cmnd.Parameters.Add("@id_rawmaterial_fk", SqlDbType.Int).Value = Virtual_listMaterials.Rows[i][0];
-                                cmnd.Parameters.Add("@qt_Item", SqlDbType.Int).Value = Virtual_listMaterials.Rows[i][2];
-                                cmnd.Parameters.Add("@preco_ITEM", SqlDbType.Real).Value = Virtual_listMaterials.Rows[i][3];
-
-                                sqlcon.Open();
-                                cmnd.ExecuteNonQuery();
-                                cmnd.Parameters.Clear();
-                                sqlcon.Close();
-                            }
 
                             MessageBox.Show("Registro atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -434,11 +365,10 @@ namespace ProjetoWinform
                     finally
                     {
                         LimparDados();
-                        FormatListProducts();
-                        edtDesc.Enabled = false;
-                        mskedtSellDate.Enabled = false;
+                        FormatListMaterials();
+                        mskedtProduceDay.Enabled = false;
                         dGridView_Produce.Enabled = true;
-                        dGridView_Materials.Enabled = true;
+                        dGridView_Materials.Enabled = false;
                         pnlCentro.Enabled = false;
 
                         imgButton_Add.Enabled = true; imgButton_Add.Image = imgButton_Add.ErrorImage;
@@ -453,13 +383,11 @@ namespace ProjetoWinform
                         UPDATE = false;
                         DELETE = false;
                     }
-                }
+                
             }
             if (DELETE)
             {
-                string delete = @"  DELETE FROM[dbo].[tblPurchase_RawMaterial]
-                                    WHERE id_purchase_fk = @id;
-                                    DELETE FROM[dbo].[tblPurchase] 
+                string delete = @"  DELETE FROM[dbo].[tblProd_Produced]
                                     WHERE id = @id;";
                 try
                 {
@@ -473,7 +401,7 @@ namespace ProjetoWinform
 
                         sqlcon.Open();
                         cmnd.ExecuteNonQuery();
-                        MessageBox.Show("Cadastro excluído permanentemente!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Registro excluído permanentemente!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch (Exception ex)
@@ -484,11 +412,10 @@ namespace ProjetoWinform
                 {
                     sqlcon.Close();
                     LimparDados();
-                    FormatListProducts();
-                    edtDesc.Enabled = false;
-                    mskedtSellDate.Enabled = false;
+                    FormatListMaterials();
+                    mskedtProduceDay.Enabled = false;
                     dGridView_Produce.Enabled = true;
-                    dGridView_Materials.Enabled = true;
+                    dGridView_Materials.Enabled = false;
                     pnlCentro.Enabled = false;
 
                     imgButton_Add.Enabled = true; imgButton_Add.Image = imgButton_Add.ErrorImage;
@@ -512,16 +439,15 @@ namespace ProjetoWinform
             DELETE = false;
 
             LimparDados();
-            FormatListProducts();
+            FormatListMaterials();
             ExibirDados();
 
-            edtDesc.Enabled = false;
-            mskedtSellDate.Enabled = false;
+            mskedtProduceDay.Enabled = false;
             cmbRecipes.Enabled = false;
             edtQtProduce.Enabled = false;
             pnlCentro.Enabled = false;
             dGridView_Produce.Enabled = true;
-            dGridView_Materials.Enabled = true;
+            dGridView_Materials.Enabled = false;
 
             imgButton_Add.Enabled = true; imgButton_Add.Image = imgButton_Add.ErrorImage;
             imgButton_Update.Enabled = true; imgButton_Update.Image = imgButton_Update.ErrorImage;

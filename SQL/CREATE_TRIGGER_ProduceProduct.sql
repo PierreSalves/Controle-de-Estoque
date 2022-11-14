@@ -24,7 +24,7 @@ BEGIN
 		SELECT  rawrecipe.id_rawmaterial_fk
 		FROM tblRaw_Recipe AS rawrecipe
 		INNER JOIN tblRawMaterial AS rawmaterial ON rawrecipe.id_rawmaterial_fk = rawmaterial.id
-		WHERE rawrecipe.id_recipe_fk = 6;--@Recipe_ID;
+		WHERE rawrecipe.id_recipe_fk = @Recipe_ID;
 		
 	SELECT @Recipe_ID = (SELECT produce.id_recipe_fk 
 							FROM inserted AS produce);
@@ -43,7 +43,7 @@ BEGIN
 									WHERE product.id = @Product_ID);
 		IF @Estoque_qtProduct IS NULL
 			SELECT @Estoque_qtProduct = 0;
-	SELECT @Equacao_de_producao = @Estoque_qtProduct + @Produce_qtProduct;
+	SELECT @Equacao_de_producao = (@Estoque_qtProduct + @Produce_qtProduct);
 
 	----------------------------------------------------------------------------UPDATE qtProduct
 	UPDATE tblProduct
@@ -77,7 +77,7 @@ BEGIN
 									WHERE rawrecipe.id_recipe_fk = @Recipe_ID
 										AND rawrecipe.id_rawmaterial_fk = @Material_ID);
 
-		SELECT @Equacao_de_Materiais_Usados = @Estoque_qtMaterial - @qt_Material;
+		SELECT @Equacao_de_Materiais_Usados = (@Estoque_qtMaterial - @qt_Material);
 
 		UPDATE tblRawMaterial
 			SET

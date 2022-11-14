@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProducao));
             this.pnlSuperior = new System.Windows.Forms.Panel();
             this.lblSuperior = new System.Windows.Forms.Label();
             this.dGridView_Produce = new System.Windows.Forms.DataGridView();
             this.dGridView_Materials = new System.Windows.Forms.DataGridView();
             this.pnlCentro = new System.Windows.Forms.Panel();
+            this.edtProduct = new System.Windows.Forms.TextBox();
+            this.lblProduct = new System.Windows.Forms.Label();
             this.edtQtProduce = new System.Windows.Forms.TextBox();
             this.lblListRecipe = new System.Windows.Forms.Label();
             this.lblQtProduce = new System.Windows.Forms.Label();
             this.cmbRecipes = new System.Windows.Forms.ComboBox();
             this.lblRecipe = new System.Windows.Forms.Label();
-            this.mskedtSellDate = new System.Windows.Forms.MaskedTextBox();
+            this.mskedtProduceDay = new System.Windows.Forms.MaskedTextBox();
             this.edtID = new System.Windows.Forms.TextBox();
             this.lblSellDate = new System.Windows.Forms.Label();
-            this.edtDesc = new System.Windows.Forms.TextBox();
-            this.lblDesc = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.pnlInferior = new System.Windows.Forms.Panel();
             this.imgButton_Save = new System.Windows.Forms.PictureBox();
@@ -58,8 +58,6 @@
             this.imgButton_Delete = new System.Windows.Forms.PictureBox();
             this.imgButton_Cancel = new System.Windows.Forms.PictureBox();
             this.imgButton_Refresh = new System.Windows.Forms.PictureBox();
-            this.lblProduct = new System.Windows.Forms.Label();
-            this.edtProduct = new System.Windows.Forms.TextBox();
             this.pnlSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGridView_Produce)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dGridView_Materials)).BeginInit();
@@ -102,29 +100,29 @@
             this.dGridView_Produce.AllowUserToDeleteRows = false;
             this.dGridView_Produce.AllowUserToResizeColumns = false;
             this.dGridView_Produce.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dGridView_Produce.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dGridView_Produce.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dGridView_Produce.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dGridView_Produce.BackgroundColor = System.Drawing.Color.LightGray;
             this.dGridView_Produce.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGridView_Produce.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGridView_Produce.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dGridView_Produce.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGridView_Produce.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGridView_Produce.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGridView_Produce.DefaultCellStyle = dataGridViewCellStyle3;
             this.dGridView_Produce.EnableHeadersVisualStyles = false;
             this.dGridView_Produce.GridColor = System.Drawing.SystemColors.GrayText;
             this.dGridView_Produce.Location = new System.Drawing.Point(44, 244);
@@ -137,7 +135,7 @@
             this.dGridView_Produce.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGridView_Produce.Size = new System.Drawing.Size(715, 150);
             this.dGridView_Produce.TabIndex = 244;
-            this.dGridView_Produce.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridView_Vendas_CellContentClick);
+            this.dGridView_Produce.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridView_Produce_CellContentClick);
             // 
             // dGridView_Materials
             // 
@@ -148,24 +146,24 @@
             this.dGridView_Materials.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dGridView_Materials.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dGridView_Materials.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGridView_Materials.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGridView_Materials.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dGridView_Materials.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGridView_Materials.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGridView_Materials.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGridView_Materials.DefaultCellStyle = dataGridViewCellStyle5;
             this.dGridView_Materials.GridColor = System.Drawing.SystemColors.WindowText;
             this.dGridView_Materials.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dGridView_Materials.Location = new System.Drawing.Point(519, 95);
@@ -173,21 +171,20 @@
             this.dGridView_Materials.Name = "dGridView_Materials";
             this.dGridView_Materials.ReadOnly = true;
             this.dGridView_Materials.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGridView_Materials.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGridView_Materials.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dGridView_Materials.RowHeadersVisible = false;
             this.dGridView_Materials.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dGridView_Materials.RowTemplate.ReadOnly = true;
             this.dGridView_Materials.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGridView_Materials.Size = new System.Drawing.Size(240, 134);
             this.dGridView_Materials.TabIndex = 243;
-            this.dGridView_Materials.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridView_Products_CellContentClick);
             // 
             // pnlCentro
             // 
@@ -205,6 +202,24 @@
             this.pnlCentro.Name = "pnlCentro";
             this.pnlCentro.Size = new System.Drawing.Size(457, 96);
             this.pnlCentro.TabIndex = 242;
+            // 
+            // edtProduct
+            // 
+            this.edtProduct.Location = new System.Drawing.Point(73, 54);
+            this.edtProduct.Name = "edtProduct";
+            this.edtProduct.Size = new System.Drawing.Size(171, 20);
+            this.edtProduct.TabIndex = 222;
+            // 
+            // lblProduct
+            // 
+            this.lblProduct.AutoSize = true;
+            this.lblProduct.BackColor = System.Drawing.Color.Transparent;
+            this.lblProduct.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct.Location = new System.Drawing.Point(18, 57);
+            this.lblProduct.Name = "lblProduct";
+            this.lblProduct.Size = new System.Drawing.Size(49, 13);
+            this.lblProduct.TabIndex = 220;
+            this.lblProduct.Text = "Produto";
             // 
             // edtQtProduce
             // 
@@ -238,6 +253,7 @@
             this.cmbRecipes.Name = "cmbRecipes";
             this.cmbRecipes.Size = new System.Drawing.Size(359, 21);
             this.cmbRecipes.TabIndex = 216;
+            this.cmbRecipes.SelectedIndexChanged += new System.EventHandler(this.cmbRecipes_SelectedIndexChanged);
             // 
             // lblRecipe
             // 
@@ -248,16 +264,16 @@
             this.lblRecipe.TabIndex = 217;
             this.lblRecipe.Text = "Receita";
             // 
-            // mskedtSellDate
+            // mskedtProduceDay
             // 
-            this.mskedtSellDate.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.mskedtSellDate.Location = new System.Drawing.Point(672, 57);
-            this.mskedtSellDate.Mask = "00/00/0000";
-            this.mskedtSellDate.Name = "mskedtSellDate";
-            this.mskedtSellDate.Size = new System.Drawing.Size(88, 20);
-            this.mskedtSellDate.TabIndex = 241;
-            this.mskedtSellDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mskedtSellDate.ValidatingType = typeof(System.DateTime);
+            this.mskedtProduceDay.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.mskedtProduceDay.Location = new System.Drawing.Point(672, 57);
+            this.mskedtProduceDay.Mask = "00/00/0000";
+            this.mskedtProduceDay.Name = "mskedtProduceDay";
+            this.mskedtProduceDay.Size = new System.Drawing.Size(88, 20);
+            this.mskedtProduceDay.TabIndex = 241;
+            this.mskedtProduceDay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mskedtProduceDay.ValidatingType = typeof(System.DateTime);
             // 
             // edtID
             // 
@@ -277,22 +293,6 @@
             this.lblSellDate.Size = new System.Drawing.Size(97, 13);
             this.lblSellDate.TabIndex = 239;
             this.lblSellDate.Text = "Dia da Produção";
-            // 
-            // edtDesc
-            // 
-            this.edtDesc.Location = new System.Drawing.Point(175, 57);
-            this.edtDesc.Name = "edtDesc";
-            this.edtDesc.Size = new System.Drawing.Size(388, 20);
-            this.edtDesc.TabIndex = 237;
-            // 
-            // lblDesc
-            // 
-            this.lblDesc.AutoSize = true;
-            this.lblDesc.Location = new System.Drawing.Point(108, 60);
-            this.lblDesc.Name = "lblDesc";
-            this.lblDesc.Size = new System.Drawing.Size(61, 13);
-            this.lblDesc.TabIndex = 238;
-            this.lblDesc.Text = "Descrição";
             // 
             // lblID
             // 
@@ -405,24 +405,6 @@
             this.imgButton_Refresh.TabStop = false;
             this.imgButton_Refresh.Click += new System.EventHandler(this.imgButton_Refresh_Click);
             // 
-            // lblProduct
-            // 
-            this.lblProduct.AutoSize = true;
-            this.lblProduct.BackColor = System.Drawing.Color.Transparent;
-            this.lblProduct.ForeColor = System.Drawing.Color.Black;
-            this.lblProduct.Location = new System.Drawing.Point(18, 57);
-            this.lblProduct.Name = "lblProduct";
-            this.lblProduct.Size = new System.Drawing.Size(49, 13);
-            this.lblProduct.TabIndex = 220;
-            this.lblProduct.Text = "Produto";
-            // 
-            // edtProduct
-            // 
-            this.edtProduct.Location = new System.Drawing.Point(73, 54);
-            this.edtProduct.Name = "edtProduct";
-            this.edtProduct.Size = new System.Drawing.Size(171, 20);
-            this.edtProduct.TabIndex = 222;
-            // 
             // frmProducao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -433,11 +415,9 @@
             this.Controls.Add(this.dGridView_Produce);
             this.Controls.Add(this.dGridView_Materials);
             this.Controls.Add(this.pnlCentro);
-            this.Controls.Add(this.mskedtSellDate);
+            this.Controls.Add(this.mskedtProduceDay);
             this.Controls.Add(this.edtID);
             this.Controls.Add(this.lblSellDate);
-            this.Controls.Add(this.edtDesc);
-            this.Controls.Add(this.lblDesc);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.pnlSuperior);
             this.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -476,11 +456,9 @@
         private System.Windows.Forms.Label lblQtProduce;
         private System.Windows.Forms.ComboBox cmbRecipes;
         private System.Windows.Forms.Label lblRecipe;
-        private System.Windows.Forms.MaskedTextBox mskedtSellDate;
+        private System.Windows.Forms.MaskedTextBox mskedtProduceDay;
         private System.Windows.Forms.TextBox edtID;
         private System.Windows.Forms.Label lblSellDate;
-        private System.Windows.Forms.TextBox edtDesc;
-        private System.Windows.Forms.Label lblDesc;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Panel pnlInferior;
         private System.Windows.Forms.PictureBox imgButton_Save;

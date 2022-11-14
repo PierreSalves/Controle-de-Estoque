@@ -1,9 +1,3 @@
-CREATE VIEW [consulta_estoque_product] AS
-	SELECT Product.descricao, Produce.produceDay, Product.qt_estoque
-	FROM tblProduct AS Product
-	LEFT JOIN tblRecipe AS Recipe ON Recipe.id_product_fk = Product.id
-	INNER JOIN tblProd_Produced AS Produce ON Produce.id_recipe_fk = Recipe.id;
----------------------------------------------------------------------------------------------------------------	
 CREATE TRIGGER ProduceProduct ON tblProd_Produced
 FOR INSERT AS
 BEGIN 
@@ -41,7 +35,7 @@ BEGIN
 									WHERE product.id = @Product_ID);
 		IF @Estoque_qtProduct IS NULL
 			SELECT @Estoque_qtProduct = 0;
-	SELECT @Equacao_de_producao = @Estoque_qtProduct + @Produce_qtProduct;
+	SELECT @Equacao_de_producao = (@Estoque_qtProduct + @Produce_qtProduct);
 
 	----------------------------------------------------------------------------UPDATE qtProduct
 	UPDATE tblProduct
@@ -75,7 +69,7 @@ BEGIN
 									WHERE rawrecipe.id_recipe_fk = @Recipe_ID
 										AND rawrecipe.id_rawmaterial_fk = @Material_ID);
 
-		SELECT @Equacao_de_Materiais_Usados = @Estoque_qtMaterial - @qt_Material;
+		SELECT @Equacao_de_Materiais_Usados = (@Estoque_qtMaterial - @qt_Material);
 
 		UPDATE tblRawMaterial
 			SET
@@ -106,7 +100,7 @@ BEGIN
 	SELECT @Estoque_qtProduct =	(SELECT product.qt_estoque FROM tblProduct AS product
 									WHERE product.id = @Product_ID);
 
-	SELECT equacao_de_venda = @Estoque_qtProduct - @Sale_qtProduct;
+	SELECT equacao_de_venda = (@Estoque_qtProduct - @Sale_qtProduct);
 
 	UPDATE tblProduct
 		SET

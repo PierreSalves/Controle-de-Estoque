@@ -60,12 +60,8 @@ namespace ProjetoWinform
             imgButton_Cancel.Enabled = false;
 
             ExibirDados();
-            id = (int)dGridView_Compras.Rows[0].Cells[0].Value;
             FiltrarDados("material");
             FiltrarDados("GridMaterial");
-            edtID.Text = dGridView_Compras.Rows[0].Cells[0].Value.ToString();
-            edtDesc.Text = dGridView_Compras.Rows[0].Cells[1].Value.ToString();
-            mskedtBuyDate.Text = dGridView_Compras.Rows[0].Cells[2].Value.ToString();
         }
         private void dGridView_Compras_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -126,6 +122,7 @@ namespace ProjetoWinform
                 DataTable material = new DataTable();
                 adapt_cmboxMaterial = new SqlDataAdapter("SELECT id,descricao FROM tblRawMaterial", sqlcon);
                 adapt_cmboxMaterial.Fill(material);
+                id = (int)material.Rows[0][0];
                 id_Materials = new int[material.Rows.Count];    //array que armazena id de Materiais
 
                 //loop que preencre o array de id e o ComboBox de Materiais
@@ -507,8 +504,8 @@ namespace ProjetoWinform
                     string insertPurchase = @"INSERT INTO[dbo].[tblPurchase]
                                                       ([descricao],
                                                       [buyDate])
-                                             OUTPUT INSERTED.ID
-                                             VALUES 
+                                              OUTPUT INSERTED.id
+                                              VALUES 
                                                       (@descricao,
                                                       @buyDate);";
 
@@ -535,7 +532,6 @@ namespace ProjetoWinform
 
                         sqlcon.Open();
                         int lastId = (int)cmnd.ExecuteScalar();
-                        //cmnd.ExecuteNonQuery();
                         cmnd.Parameters.Clear();
                         sqlcon.Close();
 

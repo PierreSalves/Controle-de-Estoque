@@ -26,7 +26,7 @@ BEGIN
 		IF @Estoque_qtMaterial IS NULL
 			SELECT @Estoque_qtMaterial = 0;
 
-	SELECT @Equacao_de_compra = @Estoque_qtMaterial + @Buy_qtMaterial;
+	SELECT @Equacao_de_compra = (@Estoque_qtMaterial + @Buy_qtMaterial);
 	----------------------------------------------------------------------------------------
 	UPDATE tblRawMaterial
 		SET

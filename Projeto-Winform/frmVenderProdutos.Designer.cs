@@ -125,11 +125,11 @@
             // 
             this.lblSellDate.AutoSize = true;
             this.lblSellDate.BackColor = System.Drawing.Color.Transparent;
-            this.lblSellDate.Location = new System.Drawing.Point(569, 60);
+            this.lblSellDate.Location = new System.Drawing.Point(576, 60);
             this.lblSellDate.Name = "lblSellDate";
-            this.lblSellDate.Size = new System.Drawing.Size(85, 13);
+            this.lblSellDate.Size = new System.Drawing.Size(79, 13);
             this.lblSellDate.TabIndex = 230;
-            this.lblSellDate.Text = "Dia da Compra";
+            this.lblSellDate.Text = "Dia da Venda";
             // 
             // edtDesc
             // 

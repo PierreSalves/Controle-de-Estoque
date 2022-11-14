@@ -60,12 +60,8 @@ namespace ProjetoWinform
             imgButton_Cancel.Enabled = false;
 
             ExibirDados();
-            id = (int)dGridView_Vendas.Rows[0].Cells[0].Value;
             FiltrarDados("Product");
             FiltrarDados("GridProduct");
-            edtID.Text = dGridView_Vendas.Rows[0].Cells[0].Value.ToString();
-            edtDesc.Text = dGridView_Vendas.Rows[0].Cells[1].Value.ToString();
-            mskedtSellDate.Text = dGridView_Vendas.Rows[0].Cells[2].Value.ToString();
         }
         private void dGridView_Vendas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -126,6 +122,7 @@ namespace ProjetoWinform
                 DataTable product = new DataTable();
                 adapt_cmboxProducts = new SqlDataAdapter("SELECT id,descricao FROM tblProduct", sqlcon);
                 adapt_cmboxProducts.Fill(product);
+                id = (int)product.Rows[0]["ID"];
                 id_Products = new int[product.Rows.Count];    //array que armazena id de Produtos
 
                 //loop que preencre o array de id e o ComboBox de Produtos
@@ -183,7 +180,7 @@ namespace ProjetoWinform
                                                     SELECT saleProduct.id_product_fk AS IDproduto, 
                                                             product.descricao AS Produto, 
                                                             saleProduct.qt_Item AS Quantidade,
-                                                            saleProduct.preco_ITEM AS Preco,
+                                                            saleProduct.preco_ITEM AS Preco
                                                     FROM tblSales_Product AS saleProduct   
                                                     LEFT JOIN tblProduct AS product ON saleProduct.id_product_fk = product.id
                                                     INNER JOIN tblSales AS sale ON saleProduct.id_sale_fk = sale.id
@@ -426,7 +423,7 @@ namespace ProjetoWinform
             ExibirDados();
 
             edtDesc.Enabled = true;
-            mskedtSellDate.Enabled = true;
+            mskedtSellDate.Enabled = true; mskedtSellDate.Text = DateTime.Today.ToShortDateString();
             pnlCentro.Enabled = true;
             dGridView_Vendas.Enabled = false;
             dGridView_Products.Enabled = true;
@@ -504,22 +501,22 @@ namespace ProjetoWinform
             {
                 if (edtDesc.Text != "" && mskedtSellDate.Text != "")
                 {
-                    string insertPurchase = @"INSERT INTO[dbo].[tblPurchase]
+                    string insertPurchase = @"INSERT INTO[dbo].[tblSales]
                                                       ([descricao],
-                                                      [buyDate])
-                                             OUTPUT INSERTED.ID
-                                             VALUES 
+                                                      [sellDate])
+                                              OUTPUT INSERTED.id
+                                              VALUES 
                                                       (@descricao,
-                                                      @buyDate);";
+                                                      @sellDate);";
 
-                    string insertMaterials_inPurchase = @"INSERT INTO[dbo].[tblPurchase_RawMaterials]
-                                                                    ([id_purchase_fk],
-                                                                    [id_rawmaterial_fk],
+                    string insertMaterials_inPurchase = @"INSERT INTO[dbo].[tblSales_Product]
+                                                                    ([id_sale_fk],
+                                                                    [id_product_fk],
                                                                     [qt_Item],
                                                                     [preco_ITEM])
                                                          VALUES
-                                                                    (@id_purchase_fk,
-                                                                    @id_rawmaterial_fk,
+                                                                    (@id_sale_fk,
+                                                                    @id_product_fk,
                                                                     @qt_Item,
                                                                     @preco_ITEM);";
 
@@ -531,11 +528,10 @@ namespace ProjetoWinform
                         cmnd.CommandType = CommandType.Text;
                         //adicionar parametros do SqlCommand cmnd
                         cmnd.Parameters.Add("@descricao", SqlDbType.VarChar).Value = edtDesc.Text;
-                        cmnd.Parameters.Add("@buyDate", SqlDbType.Date).Value = DateTime.Today;
+                        cmnd.Parameters.Add("@sellDate", SqlDbType.Date).Value = DateTime.Today;
 
                         sqlcon.Open();
                         int lastId = (int)cmnd.ExecuteScalar();
-                        //cmnd.ExecuteNonQuery();
                         cmnd.Parameters.Clear();
                         sqlcon.Close();
 
@@ -548,8 +544,8 @@ namespace ProjetoWinform
                         for (int i = 0; i < Virtual_listProducts.Rows.Count; i++)      //MULTIPLOS INSERTS NA tblRaw_Recipe
                         {
 
-                            cmnd.Parameters.Add("@id_purchase_fk", SqlDbType.Int).Value = lastId;
-                            cmnd.Parameters.Add("@id_rawmaterial_fk", SqlDbType.Int).Value = Virtual_listProducts.Rows[i][0];
+                            cmnd.Parameters.Add("@id_sale_fk", SqlDbType.Int).Value = lastId;
+                            cmnd.Parameters.Add("@id_product_fk", SqlDbType.Int).Value = Virtual_listProducts.Rows[i][0];
                             cmnd.Parameters.Add("@qt_Item", SqlDbType.Int).Value = Virtual_listProducts.Rows[i][2];
                             cmnd.Parameters.Add("@preco_ITEM", SqlDbType.Real).Value = Virtual_listProducts.Rows[i][3];
                             sqlcon.Open();
@@ -591,16 +587,16 @@ namespace ProjetoWinform
             {
                 if (edtDesc.Text != "" && mskedtSellDate.Text != "")
                 {
-                    string updatePurchase = @"UPDATE [dbo].[tblPurchase]
+                    string updatePurchase = @"UPDATE [dbo].[tblSales]
                                             SET
                                                       [descricao] = @descricao,
-                                                      [buyDate] = @buyDate
+                                                      [sellDate] = @sellDate
                                             WHERE [id] = @id";
 
-                    string updateMaterials_inRecipe = @"UPDATE [dbo].[tblPurchase_RawMaterials]
+                    string updateMaterials_inRecipe = @"UPDATE [dbo].[tblSales_Product]
                                                         SET
-                                                                [id_purchase_fk] = @id_purchase_fk,
-                                                                [id_rawmaterial_fk] = @id_rawmaterial_fk,
+                                                                [id_sale_fk] = @id_sale_fk,
+                                                                [id_product_fk] = @id_product_fk,
                                                                 [qt_Item] = @qt_Item,
                                                                 [preco_ITEM] = @preco_ITEM
                                                         WHERE [id] = @id";
@@ -616,7 +612,7 @@ namespace ProjetoWinform
                             //adicionar parametros do comando
                             cmnd.Parameters.Add("@id", SqlDbType.Int).Value = id;
                             cmnd.Parameters.Add("@descricao", SqlDbType.VarChar).Value = edtDesc.Text;
-                            cmnd.Parameters.Add("@buyDate", SqlDbType.VarChar).Value = mskedtSellDate.Text;
+                            cmnd.Parameters.Add("@sellDate", SqlDbType.VarChar).Value = mskedtSellDate.Text;
 
                             sqlcon.Open();
                             cmnd.ExecuteNonQuery();
@@ -632,8 +628,8 @@ namespace ProjetoWinform
                             for (int i = 0; i < id_SaleProduct.Length; i++)      //MULTIPLOS UPDATES NA tblRaw_Recipe
                             {
                                 cmnd.Parameters.Add("@id", SqlDbType.Int).Value = id_SaleProduct[i];
-                                cmnd.Parameters.Add("@id_purchase_fk", SqlDbType.Int).Value = id;
-                                cmnd.Parameters.Add("@id_rawmaterial_fk", SqlDbType.Int).Value = Virtual_listProducts.Rows[i][0];
+                                cmnd.Parameters.Add("@id_sale_fk", SqlDbType.Int).Value = id;
+                                cmnd.Parameters.Add("@id_product_fk", SqlDbType.Int).Value = Virtual_listProducts.Rows[i][0];
                                 cmnd.Parameters.Add("@qt_Item", SqlDbType.Int).Value = Virtual_listProducts.Rows[i][2];
                                 cmnd.Parameters.Add("@preco_ITEM", SqlDbType.Real).Value = Virtual_listProducts.Rows[i][3];
 
@@ -676,9 +672,9 @@ namespace ProjetoWinform
             }
             if (DELETE)
             {
-                string delete = @"  DELETE FROM[dbo].[tblPurchase_RawMaterial]
-                                    WHERE id_purchase_fk = @id;
-                                    DELETE FROM[dbo].[tblPurchase] 
+                string delete = @"  DELETE FROM[dbo].[tblSales_Product]
+                                    WHERE id_sale_fk = @id;
+                                    DELETE FROM[dbo].[tblSales] 
                                     WHERE id = @id;";
                 try
                 {
