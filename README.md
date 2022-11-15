@@ -59,9 +59,9 @@
 
 ## Executando o Projeto
 	* Abra a solução "Projeto-Winform.sln" localizado na pasta "Projeto-Winform"
-	* Altere todas as strings de conexão com o banco de dadosnos ssadef
-	
-	* <img src="https://github.com/Lucas-Casarotti/Teste01/blob/main/Conectando%20no%20banco/DataSource.png" align="left" alt="Data Source">
+	* Altere todas as strings de conexão com o banco de dados nos Forms:
+		*frmLoginUser
+		<img src="https://github.com/Lucas-Casarotti/Teste01/blob/main/Conectando%20no%20banco/DataSource.png" align="left" alt="Data Source">
 	
 	* Após ter conectado o banco de dados corretamente
 	* Inicie o projeto
