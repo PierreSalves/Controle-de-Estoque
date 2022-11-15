@@ -25,7 +25,7 @@ namespace ProjetoWinform
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            /*SqlConnection sqlcon = null;
+            SqlConnection sqlcon = null;
             string strConnectionString = "Data Source=A315-42G\\SQLEXPRESS;Initial Catalog=dboPadaria;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             string strQuery = string.Empty;
             strQuery = "SELECT * FROM tblUsers WHERE nome = @usuario AND senha = @senha";
@@ -55,13 +55,13 @@ namespace ProjetoWinform
                 }
 
                 DataTable dataTable = new DataTable();
-                dataTable.Load(dataReader);*/
+                dataTable.Load(dataReader);
 
                 frmPrincipal frmPrincipal = new frmPrincipal();
 
                 frmPrincipal.Show();
-                
-            /*}
+
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -69,7 +69,7 @@ namespace ProjetoWinform
             finally
             {
                 sqlcon.Close();
-            }*/
+            }
         }
     }
 }

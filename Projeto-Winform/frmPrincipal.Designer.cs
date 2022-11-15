@@ -40,6 +40,7 @@
             this.btnSales = new System.Windows.Forms.Button();
             this.btnBuyMaterials = new System.Windows.Forms.Button();
             this.bntProduction = new System.Windows.Forms.Button();
+            this.btnEstoque = new System.Windows.Forms.Button();
             this.pnlSuperior.SuspendLayout();
             this.pnlRight.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -160,6 +161,7 @@
             this.panel1.BackColor = System.Drawing.Color.PaleTurquoise;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnEstoque);
             this.panel1.Controls.Add(this.btnSales);
             this.panel1.Controls.Add(this.btnBuyMaterials);
             this.panel1.Controls.Add(this.bntProduction);
@@ -223,6 +225,24 @@
             this.bntProduction.UseVisualStyleBackColor = false;
             this.bntProduction.Click += new System.EventHandler(this.bntProduction_Click);
             // 
+            // btnEstoque
+            // 
+            this.btnEstoque.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnEstoque.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEstoque.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEstoque.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnEstoque.FlatAppearance.BorderSize = 2;
+            this.btnEstoque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
+            this.btnEstoque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEstoque.Font = new System.Drawing.Font("Consolas", 12F);
+            this.btnEstoque.Location = new System.Drawing.Point(11, 162);
+            this.btnEstoque.Name = "btnEstoque";
+            this.btnEstoque.Size = new System.Drawing.Size(192, 30);
+            this.btnEstoque.TabIndex = 59;
+            this.btnEstoque.Text = "ESTOQUE";
+            this.btnEstoque.UseVisualStyleBackColor = false;
+            this.btnEstoque.Click += new System.EventHandler(this.btnEstoque_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -260,6 +280,7 @@
         private System.Windows.Forms.Button btnSales;
         private System.Windows.Forms.Button btnBuyMaterials;
         private System.Windows.Forms.Button bntProduction;
+        private System.Windows.Forms.Button btnEstoque;
     }
 }
 

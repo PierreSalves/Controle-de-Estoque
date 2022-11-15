@@ -57,5 +57,11 @@ namespace ProjetoWinform
             frmProducao producao = new frmProducao();
             producao.Show();
         }
+
+        private void btnEstoque_Click(object sender, EventArgs e)
+        {
+            frmEstoque estoque = new frmEstoque();
+            estoque.Show();
+        }
     }
 }

@@ -35,3 +35,4 @@ C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto_CRUDWin
 C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto_CRUDWinform\CRUD_Winform_CSharp\Projeto-Winform\obj\Debug\Projeto-Winform.csproj.CoreCompileInputs.cache
 C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto_CRUDWinform\CRUD_Winform_CSharp\Projeto-Winform\obj\Debug\ProjetoWinform.exe
 C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto_CRUDWinform\CRUD_Winform_CSharp\Projeto-Winform\obj\Debug\ProjetoWinform.pdb
+C:\Users\pierr\Documents\Faculdade\V e VI Semestre\C# - Fernando\Projeto_CRUDWinform\CRUD_Winform_CSharp\Projeto-Winform\obj\Debug\ProjetoWinform.frmEstoque.resources
