@@ -226,6 +226,7 @@
             this.dGridView_Material.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dGridView_Material.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dGridView_Material.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dGridView_Material.BackgroundColor = System.Drawing.Color.LightGray;
             this.dGridView_Material.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -254,6 +255,7 @@
             this.dGridView_Material.RowHeadersVisible = false;
             this.dGridView_Material.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dGridView_Material.RowTemplate.ReadOnly = true;
+            this.dGridView_Material.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dGridView_Material.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGridView_Material.Size = new System.Drawing.Size(715, 311);
             this.dGridView_Material.TabIndex = 6;

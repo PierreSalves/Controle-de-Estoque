@@ -27,7 +27,6 @@ namespace ProjetoWinform
             ExibirDados();
             edtDesc.Focus();
         }
-
         private void ExibirDados()
         {
             try
@@ -55,16 +54,12 @@ namespace ProjetoWinform
                 sqlcon.Close();
             }
         }
-
         private void LimparDados()
         {
             edtDesc.Text = "";
             edtTipo.Text = "";
             edtUnit.Text = "";
-            
-            edtDesc.Focus();
         }
-
         private void imgButton_Add_Click(object sender, EventArgs e)
         {
             INSERT = true; //INSERT == true
@@ -83,10 +78,8 @@ namespace ProjetoWinform
             imgButton_Save.Enabled = true; imgButton_Save.Image = imgButton_Save.ErrorImage;
             imgButton_Cancel.Enabled = true; imgButton_Cancel.Image = imgButton_Cancel.ErrorImage;
         }
-
         private void imgButton_Update_Click(object sender, EventArgs e)
         {
-
             INSERT = false;
             UPDATE = true; //UPDATE = true
             DELETE = false;
@@ -102,7 +95,6 @@ namespace ProjetoWinform
             imgButton_Save.Enabled = true; imgButton_Save.Image = imgButton_Save.ErrorImage;
             imgButton_Cancel.Enabled = true; imgButton_Cancel.Image = imgButton_Cancel.ErrorImage;
         }
-
         private void imgButton_Delete_Click(object sender, EventArgs e)
         {
             if (DialogResult.Yes == MessageBox.Show("ATENÇÃO!! ESTA É UMA AÇÃO QUE NÃO PODE SER DESFEITA?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
@@ -123,13 +115,11 @@ namespace ProjetoWinform
                 imgButton_Cancel.Enabled = true; imgButton_Cancel.Image = imgButton_Cancel.ErrorImage;
             }
         }
-
         private void imgButton_Refresh_Click(object sender, EventArgs e)
         {
             LimparDados();
             ExibirDados();
         }
-
         private void imgButton_Save_Click(object sender, EventArgs e)
         {
             if (INSERT)
@@ -284,7 +274,6 @@ namespace ProjetoWinform
                 }
             }
         }
-
         private void imgButton_Cancel_Click(object sender, EventArgs e)
         {
             LimparDados();
@@ -300,7 +289,6 @@ namespace ProjetoWinform
             imgButton_Cancel.Enabled = false; imgButton_Cancel.Image = imgButton_Cancel.InitialImage;
             ExibirDados();
         }
-
         private void dGridView_Cliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -315,7 +303,6 @@ namespace ProjetoWinform
                 MessageBox.Show("Erro: " + ex.ToString());
             }
         }
-
         private void frmCadastroProduct_Load(object sender, EventArgs e)
         {
             edtDesc.Enabled = false;
@@ -328,11 +315,6 @@ namespace ProjetoWinform
             imgButton_Refresh.Enabled = false;
             imgButton_Save.Enabled = false;
             imgButton_Cancel.Enabled = false;
-
-            edtID.Text = dGridView_Produtos.Rows[0].Cells[0].Value.ToString();
-            edtDesc.Text = dGridView_Produtos.Rows[0].Cells[1].Value.ToString();
-            edtTipo.Text = dGridView_Produtos.Rows[0].Cells[2].Value.ToString();
-            edtUnit.Text = dGridView_Produtos.Rows[0].Cells[3].Value.ToString();
         }
     }
 }

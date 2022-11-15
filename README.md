@@ -5,7 +5,7 @@
 É um projeto de sistema Desktop no C# com SQL SERVER, o sistema emula um controle de estoque de materiais e produtos de uma padaria, com a entrada de materiais, produção e saída de produtos.
 
 ## Funcionalidades
-**VISUALIZAR**
+* **VISUALIZAR**
 - [x] Compras de Materiais
 - [x] Materiais
 - [x] Produtos
@@ -13,19 +13,19 @@
 - [x] Produção
 - [x] Vendas de Produtos
 - [x] Estoque
-**CADASTRAR**
+* **CADASTRAR**
 - [x] Materiais
 - [x] Produtos
 - [x] Receitas
-**EDITAR**
+* **EDITAR**
 - [x] Materiais
 - [x] Produtos
 - [x] Receitas
-**EXCLUIR**
+* **EXCLUIR**
 - [x] Materiais
 - [x] Produtos
 - [x] Receitas
-**EFETUAR**
+* **EFETUAR**
 - [x] Compras de Materiais
 - [x] Produção
 - [x] Venda Produtos
@@ -68,4 +68,4 @@ Você precisa clonar este repositório na sua máquina
 * Aguarde alguns segundos até projeto ser executado
 
 ## Autor
-**Pierre Sanches Alves**
+* **Pierre Sanches Alves**

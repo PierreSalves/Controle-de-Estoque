@@ -41,19 +41,15 @@ namespace ProjetoWinform
             imgButton_Save.Enabled = false;
             imgButton_Cancel.Enabled = false;
 
-            edtID.Text = dGridView_Material.Rows[0].Cells[1].Value.ToString();
-            edtDesc.Text = dGridView_Material.Rows[0].Cells[1].Value.ToString();
-            edtTipo.Text = dGridView_Material.Rows[0].Cells[2].Value.ToString();
-            edtUnit.Text = dGridView_Material.Rows[0].Cells[3].Value.ToString();
         }
         private void dGridView_Material_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                edtID.Text = dGridView_Material.Rows[0].Cells[1].Value.ToString();
-                edtDesc.Text = dGridView_Material.Rows[0].Cells[1].Value.ToString();
-                edtTipo.Text = dGridView_Material.Rows[0].Cells[2].Value.ToString();
-                edtUnit.Text = dGridView_Material.Rows[0].Cells[3].Value.ToString();
+                edtID.Text = dGridView_Material.Rows[e.RowIndex].Cells[0].Value.ToString();
+                edtDesc.Text = dGridView_Material.Rows[e.RowIndex].Cells[1].Value.ToString();
+                edtTipo.Text = dGridView_Material.Rows[e.RowIndex].Cells[2].Value.ToString();
+                edtUnit.Text = dGridView_Material.Rows[e.RowIndex].Cells[3].Value.ToString();
             }
             catch (Exception ex)
             {

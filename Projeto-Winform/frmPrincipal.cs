@@ -28,12 +28,6 @@ namespace ProjetoWinform
             frmCadastroProduct produto = new frmCadastroProduct();
             produto.Show();
         }
-
-        private void btnCadUsers_Click(object sender, EventArgs e)
-        {
-            frmCadastroUser user = new frmCadastroUser();
-            user.Show();
-        }
         private void btnCadReceita_Click(object sender, EventArgs e)
         {
             frmCadastroReceita receita = new frmCadastroReceita();

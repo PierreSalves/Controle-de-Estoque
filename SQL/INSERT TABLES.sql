@@ -7,8 +7,8 @@ USE dboPadaria;
 
 INSERT INTO tblUsers VALUES(
 	'root',
-	'0990',
 	'adm_root@root.com',
+	'0990',
 	'0000',
 	'2022-10-10');
 
