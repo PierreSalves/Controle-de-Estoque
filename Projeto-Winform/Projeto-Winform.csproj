@@ -86,12 +86,6 @@
     <Compile Include="frmCadastroProduct.Designer.cs">
       <DependentUpon>frmCadastroProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCadastroUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCadastroUser.Designer.cs">
-      <DependentUpon>frmCadastroUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmLoginUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,9 +127,6 @@
     <EmbeddedResource Include="frmCadastroProduct.resx">
       <DependentUpon>frmCadastroProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCadastroUser.resx">
-      <DependentUpon>frmCadastroUser.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmLoginUser.resx">
       <DependentUpon>frmLoginUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +158,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Prints\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

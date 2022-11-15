@@ -1,3 +1,8 @@
+------------------------------------------------------------------------------------------------
+------------------------------------------ATENÇÃO-----------------------------------------------
+
+---------------------SÓ POPULE AS TABELAS APÓS A CRIAÇÃO DAS TRIGGERS---------------------------
+
 USE dboPadaria;
 
 INSERT INTO tblUsers VALUES(
@@ -40,14 +45,24 @@ INSERT INTO tblPurchase VALUES
 ('Compra geral','2022-10-21');
 
 INSERT INTO tblPurchase_RawMaterials VALUES
-(1,1,50000,1),
-(1,2,200,1),
-(1,3,10000,1),
-(1,4,10000,3),
-(1,5,50000,2),
-(1,6,20000,1),
-(1,7,10000,1),
-(1,8,50000,2),
-(1,9,5000,6),
-(1,10,50000,3),
+(1,1,50000,1);
+INSERT INTO tblPurchase_RawMaterials VALUES
+(1,2,200,1);
+INSERT INTO tblPurchase_RawMaterials VALUES
+(1,3,10000,1);
+INSERT INTO tblPurchase_RawMaterials VALUES
+(1,4,10000,3);
+INSERT INTO tblPurchase_RawMaterials VALUES
+(1,5,50000,2);
+INSERT INTO tblPurchase_RawMaterials VALUES
+(1,6,20000,1);
+INSERT INTO tblPurchase_RawMaterials VALUES
+(1,7,10000,1);
+INSERT INTO tblPurchase_RawMaterials VALUES
+(1,8,50000,2);
+INSERT INTO tblPurchase_RawMaterials VALUES
+(1,9,5000,6);
+INSERT INTO tblPurchase_RawMaterials VALUES
+(1,10,50000,3);
+INSERT INTO tblPurchase_RawMaterials VALUES
 (1,11,50000,2);

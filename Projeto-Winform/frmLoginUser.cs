@@ -25,11 +25,12 @@ namespace ProjetoWinform
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlcon = null;
+           
             string strConnectionString = "Data Source=A315-42G\\SQLEXPRESS;Initial Catalog=dboPadaria;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                
             string strQuery = string.Empty;
             strQuery = "SELECT * FROM tblUsers WHERE nome = @usuario AND senha = @senha";
-            sqlcon = new SqlConnection(strConnectionString);
+            SqlConnection sqlcon = new SqlConnection(strConnectionString);
 
             SqlCommand comando = new SqlCommand(strQuery, sqlcon);
             comando.Parameters.Add("@usuario", SqlDbType.VarChar).Value = edtUser.Text;

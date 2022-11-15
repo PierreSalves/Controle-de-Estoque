@@ -1,6 +1,6 @@
 CREATE DATABASE dboPadaria;
 
-USE		dboPadaria;
+USE	dboPadaria;
 
 CREATE TABLE tblUsers(
 	id INT PRIMARY KEY identity(1,1) not null,
