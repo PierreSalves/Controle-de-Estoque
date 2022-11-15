@@ -5,7 +5,7 @@
 É um projeto de sistema Desktop no C# com SQL SERVER, o sistema emula um controle de estoque de materiais e produtos de uma padaria, com a entrada de materiais, produção e saída de produtos.
 
 ## Funcionalidades
-- VISUALIZAR
+- **VISUALIZAR**
 - [x] Compras de Materiais
 - [x] Materiais
 - [x] Produtos
@@ -13,19 +13,19 @@
 - [x] Produção
 - [x] Vendas de Produtos
 - [x] Estoque
-- CADASTRAR
+- **CADASTRAR**
 - [x] Materiais
 - [x] Produtos
 - [x] Receitas
-- EDITAR
+- **EDITAR**
 - [x] Materiais
 - [x] Produtos
 - [x] Receitas
-- EXCLUIR
+- **EXCLUIR**
 - [x] Materiais
 - [x] Produtos
 - [x] Receitas
-- EFETUAR
+- **EFETUAR**
 - [x] Compras de Materiais
 - [x] Produção
 - [x] Venda Produtos
@@ -55,14 +55,14 @@ Você precisa clonar este repositório na sua máquina
 * 4° Passo - Abra o arquivo "CREATE_TRIGGER_SellProduct.sql" e excecute
 * 5° Passo - Abra o arquivo "INSERT TABLES.sql" e execute o comando INSERT de cada Tabela
 * OBSERVAÇÃO : O usuário padrão do sistema é inserido na tabela tblUsers, você precisa inserir o mesmo usuário cadastrado na hora que for fazer login no sistema.
-	usuário : root
-	senha : 0990
+	**usuário : root**
+	**senha : 0990**
 
 ## Executando o Projeto
 * Abra a solução "Projeto-Winform.sln" localizado na pasta "Projeto-Winform"
 * Altere todas as strings de conexão com o banco de dados em todos os forms
-<img src="https://github.com/PierreSalves/CRUD_Winform_CSharp/blob/main/Projeto-Winform/Prints/String_de_conex%C3%A3o_frmLoginUser.png?raw=true" align="left" alt="ConnectionString frmLoginUser">
-<img src="https://github.com/PierreSalves/CRUD_Winform_CSharp/blob/main/Projeto-Winform/Prints/String_de_conex%C3%A3o_frmCadastroRawMaterial.png?raw=true" align="left" alt="ConnectionString frmCadastroRawMaterial">
+* <img src="https://github.com/PierreSalves/CRUD_Winform_CSharp/blob/main/Projeto-Winform/Prints/String_de_conex%C3%A3o_frmLoginUser.png?raw=true" align="left" alt="ConnectionString frmLoginUser">
+* <img src="https://github.com/PierreSalves/CRUD_Winform_CSharp/blob/main/Projeto-Winform/Prints/String_de_conex%C3%A3o_frmCadastroRawMaterial.png?raw=true" align="left" alt="ConnectionString frmCadastroRawMaterial">
 * Após ter conectado o banco de dados corretamente
 * Inicie o projeto
 * Aguarde alguns segundos até projeto ser executado
