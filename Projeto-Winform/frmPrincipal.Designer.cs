@@ -33,14 +33,13 @@
             this.lblSuperior = new System.Windows.Forms.Label();
             this.btnCadMaterial = new System.Windows.Forms.Button();
             this.btnCadProduct = new System.Windows.Forms.Button();
-            this.btnCadUsers = new System.Windows.Forms.Button();
             this.pnlRight = new System.Windows.Forms.Panel();
             this.btnCadReceita = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEstoque = new System.Windows.Forms.Button();
             this.btnSales = new System.Windows.Forms.Button();
             this.btnBuyMaterials = new System.Windows.Forms.Button();
             this.bntProduction = new System.Windows.Forms.Button();
-            this.btnEstoque = new System.Windows.Forms.Button();
             this.pnlSuperior.SuspendLayout();
             this.pnlRight.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -106,24 +105,6 @@
             this.btnCadProduct.UseVisualStyleBackColor = false;
             this.btnCadProduct.Click += new System.EventHandler(this.btnCadProduct_Click);
             // 
-            // btnCadUsers
-            // 
-            this.btnCadUsers.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnCadUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnCadUsers.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCadUsers.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnCadUsers.FlatAppearance.BorderSize = 2;
-            this.btnCadUsers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
-            this.btnCadUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCadUsers.Font = new System.Drawing.Font("Consolas", 12F);
-            this.btnCadUsers.Location = new System.Drawing.Point(10, 162);
-            this.btnCadUsers.Name = "btnCadUsers";
-            this.btnCadUsers.Size = new System.Drawing.Size(192, 30);
-            this.btnCadUsers.TabIndex = 57;
-            this.btnCadUsers.Text = "CADASTRAR USUÁRIOS";
-            this.btnCadUsers.UseVisualStyleBackColor = false;
-            this.btnCadUsers.Click += new System.EventHandler(this.btnCadUsers_Click);
-            // 
             // pnlRight
             // 
             this.pnlRight.BackColor = System.Drawing.Color.PaleTurquoise;
@@ -131,7 +112,6 @@
             this.pnlRight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlRight.Controls.Add(this.btnCadReceita);
             this.pnlRight.Controls.Add(this.btnCadMaterial);
-            this.pnlRight.Controls.Add(this.btnCadUsers);
             this.pnlRight.Controls.Add(this.btnCadProduct);
             this.pnlRight.Location = new System.Drawing.Point(588, 69);
             this.pnlRight.Name = "pnlRight";
@@ -169,6 +149,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(212, 317);
             this.panel1.TabIndex = 59;
+            // 
+            // btnEstoque
+            // 
+            this.btnEstoque.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnEstoque.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEstoque.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEstoque.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnEstoque.FlatAppearance.BorderSize = 2;
+            this.btnEstoque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
+            this.btnEstoque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEstoque.Font = new System.Drawing.Font("Consolas", 12F);
+            this.btnEstoque.Location = new System.Drawing.Point(11, 162);
+            this.btnEstoque.Name = "btnEstoque";
+            this.btnEstoque.Size = new System.Drawing.Size(192, 30);
+            this.btnEstoque.TabIndex = 59;
+            this.btnEstoque.Text = "ESTOQUE";
+            this.btnEstoque.UseVisualStyleBackColor = false;
+            this.btnEstoque.Click += new System.EventHandler(this.btnEstoque_Click);
             // 
             // btnSales
             // 
@@ -225,24 +223,6 @@
             this.bntProduction.UseVisualStyleBackColor = false;
             this.bntProduction.Click += new System.EventHandler(this.bntProduction_Click);
             // 
-            // btnEstoque
-            // 
-            this.btnEstoque.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnEstoque.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnEstoque.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEstoque.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnEstoque.FlatAppearance.BorderSize = 2;
-            this.btnEstoque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
-            this.btnEstoque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEstoque.Font = new System.Drawing.Font("Consolas", 12F);
-            this.btnEstoque.Location = new System.Drawing.Point(11, 162);
-            this.btnEstoque.Name = "btnEstoque";
-            this.btnEstoque.Size = new System.Drawing.Size(192, 30);
-            this.btnEstoque.TabIndex = 59;
-            this.btnEstoque.Text = "ESTOQUE";
-            this.btnEstoque.UseVisualStyleBackColor = false;
-            this.btnEstoque.Click += new System.EventHandler(this.btnEstoque_Click);
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,7 +253,6 @@
         private System.Windows.Forms.Label lblSuperior;
         private System.Windows.Forms.Button btnCadMaterial;
         private System.Windows.Forms.Button btnCadProduct;
-        private System.Windows.Forms.Button btnCadUsers;
         private System.Windows.Forms.Panel pnlRight;
         private System.Windows.Forms.Button btnCadReceita;
         private System.Windows.Forms.Panel panel1;

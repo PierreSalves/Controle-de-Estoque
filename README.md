@@ -60,9 +60,25 @@
 ## Executando o Projeto
 	* Abra a solução "Projeto-Winform.sln" localizado na pasta "Projeto-Winform"
 	* Altere todas as strings de conexão com o banco de dados nos Forms:
-		*frmLoginUser
-		<img src="https://github.com/Lucas-Casarotti/Teste01/blob/main/Conectando%20no%20banco/DataSource.png" align="left" alt="Data Source">
-	
+		* frmLoginUser
+		<img src="https://github.com/PierreSalves/CRUD_Winform_CSharp/blob/main/Projeto-Winform/Prints/String_de_conex%C3%A3o_frmLoginUser.png?raw=true" align="left" alt="ConnectionString frmLoginUser">
+		* frmCadastroRawMaterial
+		<img src="https://github.com/PierreSalves/CRUD_Winform_CSharp/blob/main/Projeto-Winform/Prints/String_de_conex%C3%A3o_frmCadastroRawMaterial.png?raw=true" align="left" alt="ConnectionString frmCadastroRawMaterial">
+		* frmCadastroProduct
+		<img src="https://github.com/PierreSalves/CRUD_Winform_CSharp/blob/main/Projeto-Winform/Prints/String_de_conex%C3%A3o_frmCadastroRawMaterial.png?raw=true" align="left" alt="ConnectionString frmCadastroProduct">
+		* frmCadastroReceita
+		<img src="https://github.com/PierreSalves/CRUD_Winform_CSharp/blob/main/Projeto-Winform/Prints/String_de_conex%C3%A3o_frmCadastroRawMaterial.png?raw=true" align="left" alt="ConnectionString frmCadastroReceita">
+		* frmComprarMateriais
+		<img src="https://github.com/PierreSalves/CRUD_Winform_CSharp/blob/main/Projeto-Winform/Prints/String_de_conex%C3%A3o_frmCadastroRawMaterial.png?raw=true" align="left" alt="ConnectionString frmComprarMateriais">
+		* frmProdução
+		<img src="https://github.com/PierreSalves/CRUD_Winform_CSharp/blob/main/Projeto-Winform/Prints/String_de_conex%C3%A3o_frmCadastroRawMaterial.png?raw=true" align="left" alt="ConnectionString frmProdução">
+		* frmVenderProdutos
+		<img src="https://github.com/PierreSalves/CRUD_Winform_CSharp/blob/main/Projeto-Winform/Prints/String_de_conex%C3%A3o_frmCadastroRawMaterial.png?raw=true" align="left" alt="ConnectionString frmVenderProdutos">
+		* frmEstoque
+		<img src="https://github.com/PierreSalves/CRUD_Winform_CSharp/blob/main/Projeto-Winform/Prints/String_de_conex%C3%A3o_frmCadastroRawMaterial.png?raw=true" align="left" alt="ConnectionString frmEstoque">
 	* Após ter conectado o banco de dados corretamente
 	* Inicie o projeto
 	* Aguarde alguns segundos até projeto ser executado
+
+## Autor
+	**Pierre Sanches Alves**
